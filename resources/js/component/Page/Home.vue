@@ -2,17 +2,17 @@
     <body>
         <div>
             <nav class="hamburger-nav">
-                <div class="logo">Christian Kit V. Rotairo</div>
                 <div>
                     <ul class="nav-links">
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#about" @click.prevent="scrollTo('about')">About</a></li>
+                        <li><a href="#education" @click.prevent="scrollTo('education')">Education</a></li>
+                        <li><a href="#skills" @click.prevent="scrollTo('skills')">Skills</a></li>
+                        <li><a href="#awards" @click.prevent="scrollTo('awards')">Awards</a></li>
+                        <li><a href="#contact" @click.prevent="scrollTo('contact')">Contact</a></li>
                     </ul>
                 </div>
             </nav>
-            <div class="container1">
+            <div class="container1" id="about">
                 <div class="images-container">
                     <img class="docu" v-for="(img, index) in docu" :key="index" :src="img" />
                 </div>
@@ -33,7 +33,7 @@
 
 
             <!-- About -->
-            <div class="container3">
+            <div id="education" class="container3">
                 <div class="know">
                     <p class="para">Know me more</p>
                 </div>
@@ -43,45 +43,87 @@
 
                 <!-- Image -->
                 <div class="row">
-                    <div class="col-md-6 d-flex justify-content-center">
+                    <div class="col-md-6">
+                        <!-- About Me Image -->
                         <img class="about-me" style="margin-top: 5em; max-width: 100%;" v-for="(img, index) in image"
                             :key="index" :src="img" />
                     </div>
-                    <div class="col-md-6 d-flex flex-column align-items-center">
-                        <!-- Education -->
-                        <div class="educ">
-                            <h1 class="education" style="font-weight: bold">Education</h1>
-                        </div>
-                        <div class="school d-flex flex-column justify-content-between">
-                            <div class="p-3">
-                                <div class="jugaban d-flex flex-column align-items-center">
-                                    <h5 style="text-align: center; font-weight: bold; width:auto;">
-                                        Jugaban National Highschool
-                                    </h5>
-                                    <p style="font-weight: bold">HUMSS</p>
-                                    <p>2019-2020</p>
-                                    <img class="jugaban" v-for="(img, index) in jugaban" :key="index" :src="img" />
-                                </div>
-                            </div>
+                    <div class="col-md-6">
+                        <!-- Carousel -->
+                        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="container">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-6">
+                                                <!-- Education -->
+                                                <div class="educ">
+                                                    <h1 class="education" style="font-weight: bold">Education</h1>
+                                                </div>
 
-                            <div class="p-3">
-                                <div class="jugaban d-flex flex-column align-items-center">
-                                    <h5 style="text-align: center; font-weight: bold">
-                                        Eastern Visayas State University
-                                    </h5>
-                                    <p style="font-weight: bold">BSIT</p>
-                                    <p>2020-Present</p>
-                                    <img class="jugaban" v-for="(img, index) in evsu" :key="index" :src="img" />
+                                                <div class="school d-flex flex-column justify-content-between">
+                                                    <div class="p-3">
+                                                        <div class="jugaban d-flex flex-column align-items-center">
+                                                            <h5 style="text-align: center; font-weight: bold; width:auto;">
+                                                                Jugaban National Highschool
+                                                            </h5>
+                                                            <p style="font-weight: bold">HUMSS</p>
+                                                            <p>2019-2020</p>
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <!-- Centering images -->
+                                                                    <img class="jugaban" v-for="(img, index) in jugaban"
+                                                                        :key="index" :src="img" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="container">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-6">
+                                                <!-- Education -->
+                                                <div class="educ">
+                                                    <h1 class="education" style="font-weight: bold">Education</h1>
+                                                </div>
+                                                <div class="school d-flex flex-column justify-content-between">
+                                                    <div class="p-3">
+                                                        <div class="jugaban d-flex flex-column align-items-center">
+                                                            <h5 style="text-align: center; font-weight: bold;">
+                                                                Eastern Visayas State University
+                                                            </h5>
+                                                            <p style="font-weight: bold;">BSIT</p>
+                                                            <p>2020-Present</p>
+                                                            <div class="col-md-6">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <!-- Centering images -->
+                                                                    <img class="jugaban" v-for="(img, index) in evsu"
+                                                                        :key="index" :src="img" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
+
+
             <!-- Skills -->
-            <div class="skills">
+            <div id="skills" class="skills">
                 <h1 style="font-weight: bold">Skills</h1>
             </div>
             <div class="d-flex justify-content-center text-center">
@@ -162,7 +204,7 @@
             </div>
 
             <!-- Award -->
-            <div class="skills">
+            <div id="awards" class="skills">
                 <h1 style="font-weight: bold"><i class="fa-solid fa-award"></i> Honors & Awards</h1>
             </div>
             <div class="honor d-flex justify-content-center text-center">
@@ -172,14 +214,23 @@
                             <h4 style="margin-bottom: 5px; font-weight:bold">
                                 3rd IN-CAMPUS STUDENT RESEARCH CONGRESS
                             </h4>
-                            <p style="margin-bottom: 5px; font-weight:bold">
-                                as BEST POSTER PRESENTER for their paper entitled: Strategic Workforce
-                                Optimization:Development of HR Management System wih Presciptive Insights for Carigara Local
-                                Govenment Unit during the 3RD IN-CAMPUS STUDENT RESEARCH CONGRESS on December
-                                13-14 2023 at EVSU-Carigara Mini-Gymnasium Carigara,Leyte
-                            </p>
+                            <img class="awards" v-for="(img, index) in award" :key="index" :src="img" />
                         </div>
                     </div>
+                </div>
+            </div>
+
+
+            <!-- Contact -->
+            <div id="contact" class="skills">
+                <h6 style="font-weight: bold; font-size: 1.5rem;">Contact</h6>
+            </div>
+            <div class="honor d-flex justify-content-center text-center">
+                <div class="skill-list">
+                    <a href="https://github.com/Christian24-r" target="_blank"><i class="bi bi-github"
+                            style="margin-right: 1em; font-size: 2rem;"></i></a>
+                    <a href="https://www.linkedin.com/in/christiankit-rotairo-1284072b0/" target="_blank"><i class="bi bi-linkedin"
+                            style="font-size: 2rem;"></i></a>
                 </div>
             </div>
 
@@ -189,6 +240,33 @@
 
 <script>
 export default {
+    methods: {
+        scrollTo(awards) {
+            const section = document.getElementById(awards);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        },
+        scrollTo(education) {
+            const section = document.getElementById(education);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        },
+        scrollTo(skills) {
+            const section = document.getElementById(skills);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        },
+        scrollTo(contact) {
+            const section = document.getElementById(contact);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        },
+
+    },
     data() {
         return {
             docu: [
@@ -203,6 +281,9 @@ export default {
             evsu: [
                 "https://scontent.fdvo1-2.fna.fbcdn.net/v/t39.30808-6/237170717_10159380668691838_867040353180657182_n.png?_nc_cat=106&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeFrcXpN1wmnXHEdZ51_6MDOQD9vBz39oCBAP28HPf2gILMcTzNSfidR_ykDpNPLleoPANCsVAr2jYnqWcfiSME_&_nc_ohc=1MBdJcId4D0AX88WrQD&_nc_ht=scontent.fdvo1-2.fna&oh=00_AfC0HJ0GManIs49irgWjfCJzVWmBGE3Pq51UmGCc01PS-g&oe=65BE155E",
             ],
+            award: [
+                "https://scontent.fceb1-1.fna.fbcdn.net/v/t1.15752-9/415953477_355871397341168_4585869114758234245_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeGglnz_2EMREsSqcKdAWvT1YXQI8UKgn4BhdAjxQqCfgHtn0BgMv-qt1-xR6AGHWGqf2FzzEDkLepxVK84LW252&_nc_ohc=wYmT9tcvIqEAX_Bx8PA&_nc_ht=scontent.fceb1-1.fna&oh=03_AdSY_VWNufnS5pzPaw80nI8Bviy5gXcmn58a93mWh_MxSw&oe=65E2AB29"
+            ]
         };
     },
 };
@@ -213,13 +294,21 @@ export default {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     background: white;
 }
 
 .container {
     max-width: 100%;
     /* Default width */
+}
+
+.awards {
+    width: 25rem;
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-top: 5px;
 }
 
 .award {
@@ -229,8 +318,7 @@ body{
     margin-top: 1em;
     border-style: solid;
     height: 3%;
-    width: 50%;
-    border-color: gray;
+    width: 40em;
 }
 
 
@@ -257,7 +345,7 @@ body{
 .hello,
 .dev {
     margin: 1rem 0;
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
 }
 
 .h1 {
@@ -300,7 +388,8 @@ body{
     display: flex;
     border-radius: 20px;
     margin-top: 2em;
-    margin-right: 8em;
+    margin-left: 10em;
+    text-align: center;
 }
 
 .p-3 {
@@ -312,6 +401,7 @@ body{
     height: 20em;
     border-style: solid;
     border-color: gray;
+    width: 30em;
 }
 
 .about-me {
@@ -368,7 +458,7 @@ nav {
 }
 
 .nav-links {
-    gap: 2rem;
+    gap: 20px;
     list-style: none;
     font-size: 1.5rem;
 }
@@ -380,17 +470,12 @@ a {
 }
 
 a:hover {
-    color: blue;
+    color: gray;
     text-decoration-color: rgb(182, 182, 182);
 }
-
-.logo {
-    font-size: 1.75rem;
-}
-
 .docu {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     overflow: hidden;
     margin: 25px auto;
@@ -401,10 +486,29 @@ a:hover {
 }
 
 @media screen and (max-width: 768px) {
-    .nav-links{
-        margin-top: 5em;
-        margin-bottom: 3em;
+    .award {
+        width: 90%;
+        max-width: 400px;
+        height: auto;
     }
+
+    .awards {
+        height: 180px;
+        width: 90%;
+        margin-right: 1em;
+        margin-left: 1em;
+        margin-top: 5px;
+        max-width: 400px;
+
+    }
+
+    .nav-links {
+        flex-direction: row;
+        align-items: flex-end;
+        font-size: 1em;
+
+    }
+
     .award {
         margin-top: 1em;
     }
@@ -426,12 +530,12 @@ a:hover {
     }
 
     .h1 {
-        font-size: 1.5rem;
+        font-size: 1.5em;
     }
 
-    .dev {
-        font-size: 0.9rem;
-    }
+    /* .dev {
+        font-size: 30px;
+    } */
 
     .award {
         width: fit-content;
@@ -471,11 +575,15 @@ a:hover {
         text-align: center;
     }
 
-    h1 .education {
-        margin-right: 50%;
+    .educ {
+        margin-left: 3em;
+        margin-right: auto;
+        max-width: 80%;
+        /* Adjust the maximum width as needed */
     }
 
-    .imge .about-me {
+
+    .about-me {
         width: 15rem;
         margin-top: 5em;
         display: flex;
@@ -488,21 +596,21 @@ a:hover {
         display: flex;
         justify-content: center;
         margin-right: 1em;
-        font-size: 1.25rem;
+        /* font-size: 1.25rem; */
     }
 
     .container1 .images-container img {
         width: 200px;
         height: 200px;
-        margin-top: 6em;
+        margin-top: auto;
     }
 
 
 
     .hamburger-nav {
         flex-direction: column;
-        align-items: center;
-        padding: 1rem;
+        align-items: flex-end;
+        padding: .2rem;
     }
 
     .logo {
@@ -511,8 +619,10 @@ a:hover {
     }
 
     .nav-links {
-        flex-direction: column;
-        gap: 1rem;
+        flex-direction: row;
+        justify-content: center;
+        display: flex;
+        margin-right:6px;
         text-align: center;
     }
 
@@ -543,7 +653,6 @@ a:hover {
         height: auto;
     }
 
-    .educ,
     .p-3 {
         margin-right: 0;
     }
@@ -574,5 +683,4 @@ a:hover {
     h3 {
         font-size: 15px;
     }
-}
-</style>
+}</style>
