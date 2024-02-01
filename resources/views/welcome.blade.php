@@ -25,7 +25,7 @@
 }
 
 body {
-   background:  #2C3338;
+   background:  #242526;
 
 }
 

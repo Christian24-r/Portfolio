@@ -1,32 +1,51 @@
 <template>
     <body>
         <div class="container">
-            <form class="form" id="login">
+            <form @submit.prevent="handleLogin" class="form" id="login">
                 <h1 class="form__title" style="text-decoration: none; color: white;">Login</h1>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Username">
-                    <div class="form__input-error-message"></div>
+                    <input v-model="email" style=" background: #3A3B3C; border: 1px solid #3A3B3C; border-radius: 20px" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+
                 </div>
                 <div class="form__input-group">
-                    <input type="password" class="form__input" autofocus placeholder="Password">
-                    <div class="form__input-error-message"></div>
+                    <input v-model="password" style=" background: #3A3B3C;  border: 1px solid #3A3B3C; border-radius: 20px;" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
                 <button class="btn btn-primary" type="submit">Login</button>
 
-                <p class="mt-3" style="text-decoration: none; color: white;">Have an account? <a href="/register" @click="redirectToregister" style="text-decoration: none; color: white;">Login</a></p>
+                <p class="mt-3" style="text-decoration: none; color: white;">Have an account? <a href="/register" @click="redirectToregister" style="text-decoration: none; color: white;">Register</a></p>
             </form>
         </div>
     </body>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+    data() {
+        return {
+            email:'',
+            password:''
+        };
+    },
     methods: {
+        handleLogin() {
+            axios.post('http://127.0.0.1:8000/api/auth/login', {
+                email: this.email,
+                password: this.password
+            })
+            .then(response => {
+                    this.$router.push('/home')
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        },
         redirectToregister() {
-            this.$router.push('/register');
+            this.$router.push('/login');
         }
     }
-};
+}
 </script>
 
 <style scoped>
@@ -79,52 +98,9 @@ export default {
         margin-bottom: 1rem;
     }
 
-    .form__input {
-        display: block;
-        width: 100%;
-        padding: 0.75rem;
-        box-sizing: border-box;
-        border-radius: var(--border-radius);
-        border: 1px solid #dddddd;
-        outline: none;
-        background: #eeeeee;
-        transition: background 0.2s, border-color 0.2s;
-    }
-
-    .form__input:focus {
-        border-color: var(--color-primary);
-        background: #ffffff;
-    }
-
-    .form__input-error-message {
-        margin-top: 0.5rem;
-        font-size: 0.85rem;
-        color: var(--color-error);
-    }
-
-    .form__button {
-        width: 100%;
-        padding: 1rem 2rem;
-        font-weight: bold;
-        font-size: 1.1rem;
-        color: #ffffff;
-        border: none;
-        border-radius: var(--border-radius);
-        outline: none;
-        cursor: pointer;
-        background: var(--color-primary);
-    }
-
-    .form__button:hover {
-        background: var(--color-primary-dark);
-    }
-
-    .form__button:active {
-        transform: scale(0.98);
-    }
 
     @media screen and (max-width: 480px) {
-       
+
         .container {
             padding: 1rem;
             margin-top:1rem;
@@ -143,3 +119,4 @@ export default {
         }
     }
 </style>
+

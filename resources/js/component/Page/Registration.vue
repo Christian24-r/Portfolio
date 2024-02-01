@@ -1,29 +1,61 @@
 <template>
     <body>
         <div class="container">
-            <form class="form" id="login">
+            <form @submit.prevent = handleRegister class="form" id="login">
                 <h1 class="form__title" style="text-decoration: none; color: white;">Register</h1>
                 <div class="form__input-group">
-                    <input type="text" class="form__input" autofocus placeholder="Username">
+                    <input v-model="name" type="text" class="form__input" autofocus placeholder="Name">
                     <div class="form__input-error-message"></div>
                 </div>
                 <div class="form__input-group">
-                    <input type="password" class="form__input" autofocus placeholder="Password">
+                    <input v-model="email" type="email" class="form__input" autofocus placeholder="Email">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input v-model="password" type="password" class="form__input" autofocus placeholder="Password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input v-model="password_confirmation" type="password" class="form__input" autofocus placeholder="Confirm Password">
                     <div class="form__input-error-message"></div>
                 </div>
                 <button class="btn btn-primary" type="submit">Register</button>
 
-                <p class="mt-3" style="text-decoration: none; color: white;">Have an account? <a href="/login" @click="redirectToLogin" style="text-decoration: none; color: white;">Login</a></p>
+                <p class="mt-3" style="text-decoration: none; color: white;">Have an account? <a href="/" @click="redirectToLogin" style="text-decoration: none; color: white;">Login</a></p>
             </form>
         </div>
     </body>
 </template>
-
 <script>
+import axios from 'axios';
+
 export default {
+    data() {
+        return {
+            name: '',
+            email: '',
+            password: '',
+            password_confirmation: ''
+        };
+    },
     methods: {
+        handleRegister() {
+            axios.post('http://127.0.0.1:8000/api/auth/register', {
+                name: this.name,
+                email: this.email,
+                password: this.password,
+                password_confirmation: this.password_confirmation
+            })
+            .then(response => {
+                console.log(response);
+                this.$router.push('/')
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        },
         redirectToLogin() {
-            this.$router.push('/login');
+            this.$router.push('/');
         }
     }
 };
@@ -85,42 +117,22 @@ export default {
         padding: 0.75rem;
         box-sizing: border-box;
         border-radius: var(--border-radius);
-        border: 1px solid #dddddd;
+        border: 1px solid #3A3B3C;
         outline: none;
-        background: #eeeeee;
-        transition: background 0.2s, border-color 0.2s;
+        border-radius: 20px;
+        background: #3A3B3C;
+        color:white;
     }
 
     .form__input:focus {
-        border-color: var(--color-primary);
-        background: #ffffff;
+        background: #3A3B3C;
+        color:white;
     }
 
     .form__input-error-message {
         margin-top: 0.5rem;
         font-size: 0.85rem;
         color: var(--color-error);
-    }
-
-    .form__button {
-        width: 100%;
-        padding: 1rem 2rem;
-        font-weight: bold;
-        font-size: 1.1rem;
-        color: #ffffff;
-        border: none;
-        border-radius: var(--border-radius);
-        outline: none;
-        cursor: pointer;
-        background: var(--color-primary);
-    }
-
-    .form__button:hover {
-        background: var(--color-primary-dark);
-    }
-
-    .form__button:active {
-        transform: scale(0.98);
     }
 
     @media screen and (max-width: 480px) {

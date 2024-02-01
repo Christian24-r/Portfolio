@@ -4,8 +4,9 @@ import Register from './component/Page/Registration.vue';
 import Home from './component/Page/Home.vue';
 
 const routes = [
+
     {
-        path:'/login',
+        path:'/',
         component:Login
     },
     {
