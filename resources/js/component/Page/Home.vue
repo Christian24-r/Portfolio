@@ -28,7 +28,6 @@
                             Excited to explore and contribute to the world of front-end development.</p>
                     </div>
                 </div>
-
             </div>
 
 
